@@ -1,11 +1,7 @@
 #ifndef PONG_SHADERS_H
 #define PONG_SHADERS_H
 
-#include <iostream>
 #include <fstream>
-#include <glad/glad.h>
-#include <assert.h>
-#include <vector>
 
 using namespace std;
 

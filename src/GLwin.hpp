@@ -29,7 +29,9 @@ class GLwin
         glfwSetFramebufferSizeCallback(ref,framebuffer_size_callback);
     }
     void static framebuffer_size_callback(GLFWwindow* window, int width, int height)
-    { glViewport(0,0,width,height); }
+    {
+        glViewport(0,0,width,height);
+    }
 };
 
 #endif //PONG_GLWIN_H

@@ -35,7 +35,7 @@ class Ball
         glEnableVertexAttribArray(0);
 
         glBindBuffer(GL_ARRAY_BUFFER,0); glBindVertexArray(0);
-        speedX=1.5*rad; speedY=-1.5*rad; locX=0; locY=0; score=0;
+        speedX=rad; speedY=-1*rad; locX=0; locY=0; score=0;
     }
 
     void draw()
@@ -50,16 +50,24 @@ class Ball
         float toAddX=0,toAddY=0;
         if(locX+rad+speedX<0.95 and locX+speedX-rad>-0.95) toAddX=speedX; else speedX*=-1;
         if(locY+rad+speedY<0.95 and locY+speedY-rad>-0.95) toAddY=speedY; else speedY*=-1;
-        if(locY<0 and toAddY==0) score=0;
+        if(locY<0 and toAddY==0){ score=0; speedX*=rad/abs(speedX); speedY*=rad/abs(speedY); }
         updateBuffer(toAddX,toAddY);
     }
 
-    void collide(){ score++; speedY*=-1; }
+    void collide()
+    {
+        score++; speedY*=-1;
+        speedY+=(speedY<0?-1:1)*0.0002; speedX+=(speedX<0?-1:1)*0.0002;
+    }
 
     float getLocX() const { return locX; }
     float getLocY() const { return locY; }
     float getRad()  const { return rad;  }
     int getScore() const { return score; }
+
+    float getSpeedY() const {
+        return speedY;
+    }
 
     ~Ball(){ glDeleteBuffers(1,&VBO); glDeleteBuffers(1,&VAO); }
 };

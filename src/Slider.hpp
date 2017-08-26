@@ -51,8 +51,8 @@ class Slider
 
     void checkCollision(Ball* ball)
     {
-        float up=ball->getLocY()+ball->getRad(),b=ball->getLocX(),down=ball->getLocY()-ball->getRad();
-        if((up>=vert[5] and up<=vert[1] or down<=vert[1] and down>=vert[5]) and vert[0]<=b and vert[2]>=b)
+        float up=ball->getLocY()+ball->getRad()+ball->getSpeedY(),x=ball->getLocX(),down=ball->getLocY()-ball->getRad()+ball->getSpeedY();
+        if((up>=vert[1] and down<=vert[1] or down<=vert[5] and up>=vert[5]) and vert[0]<=x and vert[2]>=x)
             ball->collide();
     }
 

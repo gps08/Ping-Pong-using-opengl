@@ -1,8 +1,6 @@
 #ifndef PONG_WALLS_HPP
 #define PONG_WALLS_HPP
 
-#include <glad/glad.h>
-
 class Walls
 {
     private:
@@ -11,14 +9,8 @@ class Walls
     public:
     Walls()
     {
-        float vert[]= {
-                -1.0f,1.0f,1.0f,1.0f,-1.0f,0.95,1.0f,0.95f,      //top
-                -1.0f,-1.0f,1.0f,-1.0f,-1.0f,-0.95f,1.0f,-0.95f, //bottom
-                -1.0f,1.0f,-0.95f,1.0f,-1.0f,-1.0f,-0.95f,-1.0f, //left
-                 1.0f,1.0f,0.95f,1.0f,1.0f,-1.0f,0.95f,-1.0f,    //right
-        };
-
-        unsigned int indices[] = {0,1,2,1,2,3,4,5,6,5,6,7,8,9,10,9,10,11,12,13,14,13,14,15};
+        float vert[]= {-1.0f,1.0f, 1.0f,1.0f, 1.0f,-1.0f, -1.0f,-1.0f, -0.95f,0.95f, 0.95f,0.95f, 0.95f,-0.95f, -0.95f,-0.95f};
+        unsigned int indices[] = {0,4,1, 4,1,5, 0,4,3, 4,3,7, 7,3,6, 2,6,3, 2,6,5, 2,5,1};
         glGenVertexArrays(1, &VAO); glGenBuffers(1, &VBO); glGenBuffers(1, &EBO);
         glBindVertexArray(VAO); glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER,sizeof(vert),vert,GL_STATIC_DRAW);
