@@ -60,6 +60,8 @@ class Ball
     float getLocY() const { return locY; }
     float getRad()  const { return rad;  }
     int getScore() const { return score; }
+
+    ~Ball(){ glDeleteBuffers(1,&VBO); glDeleteBuffers(1,&VAO); }
 };
 
 #endif //PONG_BALL_HPP

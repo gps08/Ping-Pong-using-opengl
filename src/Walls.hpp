@@ -12,10 +12,10 @@ class Walls
     Walls()
     {
         float vert[]= {
-                -1.0f,0.95f,1.0f,0.95f,-1.0f,0.955,1.0f,0.955f,      //top
-                -1.0f,-0.95f,1.0f,-0.95f,-1.0f,-0.955f,1.0f,-0.955f, //bottom
-                -0.955f,1.0f,-0.95f,1.0f,-0.95f,-1.0f,-0.955f,-1.0f, //left
-                 0.955f,1.0f,0.95f,1.0f,0.95f,-1.0f,0.955f,-1.0f,    //right
+                -1.0f,1.0f,1.0f,1.0f,-1.0f,0.95,1.0f,0.95f,      //top
+                -1.0f,-1.0f,1.0f,-1.0f,-1.0f,-0.95f,1.0f,-0.95f, //bottom
+                -1.0f,1.0f,-0.95f,1.0f,-1.0f,-1.0f,-0.95f,-1.0f, //left
+                 1.0f,1.0f,0.95f,1.0f,1.0f,-1.0f,0.95f,-1.0f,    //right
         };
 
         unsigned int indices[] = {0,1,2,1,2,3,4,5,6,5,6,7,8,9,10,9,10,11,12,13,14,13,14,15};
@@ -37,6 +37,8 @@ class Walls
         glDrawElements(GL_TRIANGLES,24,GL_UNSIGNED_INT,0);
         glBindVertexArray(0);
     }
+
+    ~Walls(){ glDeleteBuffers(1,&VBO); glDeleteBuffers(1,&EBO); glDeleteBuffers(1,&VAO); }
 };
 
 #endif //PONG_WALLS_HPP
